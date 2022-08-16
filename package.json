@@ -1,0 +1,25 @@
+{
+  "name": "@boomsi/ts-type-lib",
+  "version": "0.0.0",
+  "description": "ts types",
+  "main": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "release": "npm publish --access dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boomsi/ts-type-library.git"
+  },
+  "keywords": [
+    "Typescript",
+    "Types",
+    "ts"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boomsi/ts-type-library/issues"
+  },
+  "homepage": "https://github.com/boomsi/ts-type-library#readme"
+}

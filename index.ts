@@ -2,12 +2,12 @@
  * 类型的 key
  * string | number | symbol
  */
-type Key = keyof any;
+export type KeyType = keyof any;
 
 /**
  * 没有同时存在 T 和 U 中的类型
  */
-type SymmetricDiff<T, U> = {
+export type SymmetricDiff<T, U> = {
   [K in Exclude<
     keyof T | keyof U,
     Extract<keyof T, keyof U>
@@ -17,14 +17,14 @@ type SymmetricDiff<T, U> = {
 /**
  * 获取 T 中类型为 U (= Function) 的 Key 组成的联合类型
  */
-type FactoryKeys<T, U> = {
+export type FactoryKeys<T, U> = {
   [K in keyof T]: T[K] extends U ? T[K] : never;
 }[keyof T];
 
 /**
  * 判断 T 和 U 是否相同（包含是否可选，是否只读）
  */
-type Equal<T, U> = (<A>() => A extends T ? 1 : 2) extends <A>() => A extends U
+export type Equal<T, U> = (<A>() => A extends T ? 1 : 2) extends <A>() => A extends U
   ? 1
   : 2
   ? true
@@ -33,7 +33,7 @@ type Equal<T, U> = (<A>() => A extends T ? 1 : 2) extends <A>() => A extends U
 /**
  * 获取 T 中非只读类型的 key 组成的联合类型
  */
-type ReadonlyKeys<T> = {
+export type ReadonlyKeys<T> = {
   [K in keyof T]: Equal<Pick<T, K>, { -readonly [Q in K]: T[Q] }> extends true
     ? K
     : never;
@@ -42,21 +42,21 @@ type ReadonlyKeys<T> = {
 /**
  * 获取 T 中可选类型的 key 组成的联合类型
  */
-type OptionalKeys<T> = {
+export type OptionalKeys<T> = {
   [K in keyof T]: {} extends Pick<T, K> ? K : never;
 }[keyof T];
 
 /**
  * 用 U 中的同名属性类型覆盖 T 中的同名属性类型
  */
-type Overwrite<T, U> = {
+export type Overwrite<T, U> = {
   [K in keyof T]: K extends keyof U ? U[K] : T[K];
 };
 
 /**
  * 合并 T 和 U，同名属性类型后者覆盖前者
  */
-type Assign<T, U> = {
+export type Assign<T, U> = {
   [K in keyof T | keyof U]: K extends keyof U
     ? U[K]
     : K extends keyof T
